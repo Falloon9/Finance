@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for share in shares %}
+        <tr>
+          <td>{{ share["symbol"] }}</td>
+          <td>{{ share["name"] }}</td>
+          <td>{{ share["total_shares"] }}</td>
+          <td>{{ usd(share["price"]) }}</td>
+          <td>{{ usd(share["price"] * share["total_shares"]) }}</td>
+        </tr>
+        {% endfor %}
+        </tr>
+        <th scope="row">Balance</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{ cash }}</td>
+        </tr>
+        <th scope="row">TOTAL</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b>{{ total }}</b></td>
+        </tr>
+      </tbody>
+  </table>
+{% endblock %}
